@@ -1,0 +1,12 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# VS Code settings
+.vscode/
+
+db.sqlite3
+myvenv
