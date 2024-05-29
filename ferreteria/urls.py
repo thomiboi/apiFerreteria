@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('sistema/', include('sistema.urls')),
     path('sistema/index', include('sistema.urls')),
+    path('', views.index,name='index'),
     path('docs/', include_docs_urls(title='Documentacion de la api')),
     path('euro/', views.euro_view,name='euro')
 ]

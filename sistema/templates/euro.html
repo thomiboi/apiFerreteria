@@ -1,5 +1,24 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    {% for producto in productos %}
+    <div class="col-md-3 mb-4">
+      <!-- 4 tarjetas por fila -->
+      <section class="card" id="producto">
+        <div class="card-body">
+          <img
+            src="https://www.legrand.cl/modules/custom/legrand_ecat/assets/img/no-image.png"
+            class="card-img-top"
+            alt="imagen"
+          />
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">€{{ producto.precio_euro }}</p>
+          <p class="card-text">Cantidad: {{ producto.stock }}</p>
+        </div>
+      </section>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}

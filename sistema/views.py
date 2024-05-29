@@ -10,19 +10,20 @@ class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
-def index(request):
-    productos = Producto.objects.all()
+def index (request):
+    productos, valor_euro_clp = obtener_datos()
     ciudad = 'Santiago,CL'
     valor_euro, fecha_actualizacion = obtener_valor_euro()
     temperatura, descripcion_clima, humedad = obtener_clima(ciudad)
-    
+
     return render(request, "index.html", {
         'temperatura': temperatura,
         'descripcion_clima': descripcion_clima,
         'humedad': humedad,
         'productos': productos,
         'valor_euro': valor_euro,
-        'fecha_actualizacion': fecha_actualizacion
+        'fecha_actualizacion': fecha_actualizacion,
+        'valor_euro_clp': valor_euro_clp,
     })
 
 def obtener_clima(ciudad):
@@ -42,7 +43,20 @@ def obtener_clima(ciudad):
         return None, None, None
 
 def euro_view(request):
-    return render(request, 'euro.html')
+    productos, valor_euro_clp = obtener_datos()
+    ciudad = 'Santiago,CL'
+    valor_euro, fecha_actualizacion = obtener_valor_euro()
+    temperatura, descripcion_clima, humedad = obtener_clima(ciudad)
+
+    return render(request, "euro.html", {
+        'temperatura': temperatura,
+        'descripcion_clima': descripcion_clima,
+        'humedad': humedad,
+        'productos': productos,
+        'valor_euro': valor_euro,
+        'fecha_actualizacion': fecha_actualizacion,
+        'valor_euro_clp': valor_euro_clp,
+    })
 
 def index_producto(request):
     api_url = "http://127.0.0.1:8000/sistema/indexproducto/?format=json"
@@ -76,3 +90,21 @@ def obtener_valor_euro():
 
     # Devolver el valor del euro y la fecha de actualización
     return valor_euro, fecha_actualizacion
+
+def obtener_datos():
+    # Obtener el valor del euro en CLP desde la API de mindicador
+    response_euro = requests.get('https://mindicador.cl/api/euro')
+    data_euro = response_euro.json()
+    valor_euro_clp = data_euro['serie'][0]['valor']
+
+
+#Obtener los productos desde la API local
+    response_productos = requests.get('http://127.0.0.1:8000/sistema/producto/?format=json')
+    productos = response_productos.json()
+
+#Convertir los precios de los productos a euros
+    for producto in productos:
+        precio_clp = producto['precio']
+        producto['precio_euro'] = round(precio_clp / valor_euro_clp, 2)
+
+    return productos, valor_euro_clp
