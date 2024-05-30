@@ -1,8 +1,8 @@
 # Grupo
 
-Thomas Rojas
-Sebastian Morales
-Nicolas Palma
+- Thomas Rojas
+- Sebastian Morales
+- Nicolas Palma
 
 # Pasos para Hacerlo Funcionar
 
