@@ -48,4 +48,4 @@
 - **[Django REST Framework](http://127.0.0.1:8000/sistema/):** Interfaz del Django REST Framework.
 - **[API de Productos](http://127.0.0.1:8000/sistema/indexproducto/):** Visualizar la lista de productos y formulario para agregar nuevos productos a la API.
 - **[Panel de Administración](http://127.0.0.1:8000/admin/):** Acceso al panel de administración de Django.
-- **[Documentación](http://127.0.0.1:8000/docs/):** Documentación generada automáticamente por Django.
+- **[Documentación](http://127.0.0.1:8000/docs/):** Documentación interactiva generada automáticamente por Django.
