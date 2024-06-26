@@ -49,3 +49,13 @@
 - **[API de Productos](http://127.0.0.1:8000/sistema/indexproducto/):** Visualizar la lista de productos y formulario para agregar nuevos productos a la API.
 - **[Panel de Administración](http://127.0.0.1:8000/admin/):** Acceso al panel de administración de Django.
 - **[Documentación](http://127.0.0.1:8000/docs/):** Documentación interactiva generada automáticamente por Django.
+
+# Para ejecutar las pruebas
+
+Para ejecutar las pruebas unitarias, primero se debe inicializar la aplicacion con los comandos anteriores.
+Una vez inicializada la aplicacion, se pueden ejecutar las pruebas.
+todas las pruebas unitarias se encuentran en el archivo tests.py.
+
+Para ejecutar todas las pruebas de una vez: python manage.py test
+
+Para ejecutar pruebas de manera individual:  python manage.py test sistema.tests.ProductoModelTest."NOMBRE DE LA PRUEBA"
