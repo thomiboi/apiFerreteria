@@ -59,3 +59,5 @@ todas las pruebas unitarias se encuentran en el archivo tests.py.
 Para ejecutar todas las pruebas de una vez: python manage.py test
 
 Para ejecutar pruebas de manera individual:  python manage.py test sistema.tests.ProductoModelTest."NOMBRE DE LA PRUEBA"
+
+Test de productos en euro: python manage.py test sistema.tests.ProductoIntegrationTest.test_producto_creation_and_euro_price_integration
