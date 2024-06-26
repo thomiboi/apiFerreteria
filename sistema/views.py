@@ -44,7 +44,7 @@ def obtener_clima(ciudad):
 
 def euro_view(request):
     productos, valor_euro_clp = obtener_datos()
-    ciudad = 'Santiago,CL'
+    ciudad = 'Vina del Mar,CL'
     valor_euro, fecha_actualizacion = obtener_valor_euro()
     temperatura, descripcion_clima, humedad = obtener_clima(ciudad)
 
